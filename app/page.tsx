@@ -81,6 +81,10 @@ export default function Home() {
                 2. Combine (Msg + Hash)
               </button>
 
+              <div className="flex-1 text-xs font-mono truncate bg-white p-2 border border-dashed border-zinc-300 rounded text-zinc-600">
+                    {combined ? combined : "Message | Hash ..."}
+                  </div>
+                  
               <button onClick={() => setCipherText(encryptDES(combined, senderKey))} className="bg-zinc-800 text-white px-4 py-2 rounded w-full">
                 3. Encrypt (DES)
               </button>
@@ -139,7 +143,7 @@ export default function Home() {
 
               {receiverCalculatedHash && (
                 <div className={`p-4 rounded-lg font-bold text-center ${receiverCalculatedHash === decryptedData.split('|')[1] ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
-                  {receiverCalculatedHash === decryptedData.split('|')[1] ? "✓ INTEGRITY OK" : "⚠ INTEGRITY COMPROMISED"}
+                  {receiverCalculatedHash === decryptedData.split('|')[1] ? "✓ INTEGRITY OK" : "⚠ MESSAGE COMPROMISED"}
                 </div>
               )}
             </div>
